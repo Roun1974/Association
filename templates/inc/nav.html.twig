@@ -28,6 +28,9 @@
               <ul>
                {% if is_granted("ROLE_ADMIN") %}
                <a href="{{ path('app_logout') }}" data-toggle="modal">Se déconnecter ({{ app.user.prenom }})</a>
+                {% elseif  app.user %}
+                <a href="{{ path('app_logout') }}" data-toggle="modal">Se déconnecter ({{ app.user.prenom }})</a>
+
                  {% else %}
                 <li><a href="{{ path('app_register') }}" data-toggle="modal"><i class="icon-user"></i> S’enregistrer</a></li>
                  <li><a href="{{ path('app_login') }}" data-toggle="modal">Connexion</a></li>
