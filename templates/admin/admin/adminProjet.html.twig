@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin projet{% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <h1 class="text-danger text-center mb-5">Page d'administration projet</h1>
+
+    <a class="btn btn-success mb-2" href="{{ path('admin_ajoutProjet') }}">Ajouter</a>
+    <table class="table">
+        <tr class="table-primary">
+            <td>Nom</td>
+            <td>Description</td>
+            <td>Etat</td>
+            <td>Actions</td>
+        </tr>
+        {% for projet in projets %}
+            <tr>
+                <td>{{ projet.nom }}</td>
+                <td>{{ projet.description }}</td>
+                <td>{{ projet.etat.libelle }}</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('admin_modificationProjet', {'id' : projet.id }) }}">Modifier</a>
+                    <a class="btn btn-danger" href="{{ path('admin_suppressionProjet', {'id' : projet.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

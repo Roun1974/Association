@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin adhérent{% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <h1 class="text-danger text-center mb-5">Page d'administration adhérent</h1>
+
+    <a class="btn btn-success mb-2" href="{{ path('app_register') }}">Ajouter</a>
+    <table class="table">
+        <tr class="table-primary">
+            <td>Nom</td>
+            <td>Prénom</td>
+            <td>Mails</td>
+            <td>Téléphones</td>
+            <td>Rue</td>
+            <td>Code postal</td>
+            <td>Ville</td>
+            <td>Pays</td>
+            <td>Actions</td>
+        </tr>
+        {% for utilisateur in utilisateurs %}
+            <tr>
+                <td>{{ utilisateur.nom }}</td>
+                <td>{{ utilisateur.prenom }}</td>
+                <td>{{ utilisateur.email }}</td>
+                <td>{{ utilisateur.telephone }}</td>
+                <td>{{ utilisateur.rue }}</td>
+                <td>{{ utilisateur.codePostal }}</td>
+                <td>{{ utilisateur.ville }}</td>
+                <td>{{ utilisateur.pays }}</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('admin_modificationUtilisateur',{'id' : utilisateur.id}) }}">Modifier</a>
+                    <a class="btn btn-danger" href="{{ path('admin_suppressionUtilisateur',{'id' : utilisateur.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
