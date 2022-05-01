@@ -3,16 +3,18 @@
 {% block title %}Admin adhérent{% endblock %}
 
 {% block body %}
-
+<div class="container">
+<div class="row">
+<div class="col">
     {% for message in app.flashes('success') %}
         <div class="alert alert-success">
             {{ message }}
         </div>
     {% endfor %}
 
-    <h1 class="text-danger text-center mb-5">Page d'administration adhérent</h1>
+    <h3 class="text-danger text-center mb-5">Page d'administration adhérent</h3>
 
-    <a class="btn btn-success mb-2" href="{{ path('app_register') }}">Ajouter</a>
+    <a class="btn btn-success mb-2" href="{{ path('app_register') }}">Ajouter</a><br>
     <table class="table">
         <tr class="table-primary">
             <td>Nom</td>
@@ -42,5 +44,8 @@
             </tr>
         {% endfor %}
     </table>
+    </div>
+    </div>
+    </div>
 {% endblock %}
 
