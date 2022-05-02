@@ -73,7 +73,7 @@
         <div class="row">
           <div class="span4">
             <div class="logo">
-              <a href="index.html"><img src="assets/img/logo.png" alt="" class="logo" /></a>
+              <a href="{{ path('main_accueil') }}"><img src="assets/img/logo.png" alt="" class="logo" /></a>
               <h1>Avenir - Solidarité - Développement</h1>
             </div>
           </div>
@@ -93,11 +93,11 @@
                         <li class="dropdown"><a href="{{ path('main_projetEnCour') }}">Projets en cours <i class="icon-angle-right"></i></a>
                          
                         </li>
-                        <li class="dropdown"><a href="#">Projets futurs <i class="icon-angle-right"></i></a>
+                        <li class="dropdown"><a href="{{ path('main_projetFutur') }}">Projets futurs <i class="icon-angle-right"></i></a>
                           <ul class="dropdown-menu sub-menu-level1">
-                            <li><a href="{{ path('main_projetFutur') }}">Projet embauches bovines</a></li>
-                            <li><a href="{{ path('main_projetFutur') }}">Projets agricoles</a></li>
-                            <li><a href="{{ path('main_projetFutur') }}">Projets enegie renouvelable</a></li>
+                            <li><a href="#">Projet embauches bovines</a></li>
+                            <li><a href="#">Projets agricoles</a></li>
+                            <li><a href="#">Projets enegie renouvelable</a></li>
                           </ul>
                         </li>
                       </ul>
@@ -105,9 +105,9 @@
                     <li class="dropdown">
                       <a href="#">Notre association <i class="icon-angle-down"></i></a>
                       <ul class="dropdown-menu">
-                        <li><a href="about.html">Qui sommes nous ?</a></li>
-                        <li><a href="pricingbox.html">Boîtes de tarification</a></li>
-                        <li><a href="testimonials.html">Témoignages</a></li>
+                        <li><a href="#">Qui sommes nous ?</a></li>
+                        <li><a href="#">Boîtes de tarification</a></li>
+                        <li><a href="#">Témoignages</a></li>
                       </ul>
                     </li>
                     <li class="dropdown">
@@ -131,7 +131,7 @@
                      <li class="dropdown">
                       <a href="#"> Admin <i class="icon-angle-down"></i></a>
                       <ul class="dropdown-menu">
-                        <li><a href="{{ path('admin_utilisateur') }}">Adherents</a></li>
+                        <li><a href="#">Adherents</a></li>
                         <li><a href="#">Projets</a></li>
                         <li><a href="#">Partenaires</a></li>
                       
