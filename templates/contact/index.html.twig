@@ -3,41 +3,28 @@
 {% block title %}Formulaire de contact{% endblock %}
 
 {% block body %}
- <section id="content">
-      <div class="container">
+ <div class="container">
         <div class="row">
           <div class="span12">
-            <h5>Contactez-nous en remplissant le 
- <strong> formulaire de contact</strong> ci-dessous :</h5>
+{{ form_start(form) }}
+    {{ form_row(form.nom, {'attr': {'class': 'form-control'}}) }}
 
-            <form action="" method="post" role="form" class="contactForm">
-              <div id="sendmessage">Your message has been sent. Thank you!</div>
-              <div id="errormessage"></div>
 
-              <div class="row">
-                <div class="span4 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Votre name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                  <div class="validation"></div>
-                </div>
-                <div class="span4 form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Votre email" data-rule="email" data-msg="Please enter a valid email" />
-                  <div class="validation"></div>
-                </div>
-                <div class="span4 form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                  <div class="validation"></div>
-                </div>
-                <div class="span12 margintop10 form-group">
-                  <textarea class="form-control" name="message" rows="12" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                  <div class="validation"></div>
-                  <p class="text-center">
-                    <button class="btn btn-large btn-theme margintop10" type="submit">Envoyer message</button>
-                  </p>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+</div>
+<div class="form-group">
+    {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+
+</div>
+<div class="form-group">
+    {{ form_row(form.message, {'attr': {'class': 'form-control'}}) }}
+
+</div>
+
+<div class="form-group">
+    <input type="submit" value="Send" class="btn btn-primary py-3 px-5">
+</div>
+{{ form_end(form) }}
+</div>
+</div>
+</div>
 {% endblock %}
