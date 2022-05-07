@@ -23,12 +23,13 @@ class ContactController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
 
             $contactFormData = $form->getData();
+            $contact = $form -> getData();
             
             $message = (new Email())
                 ->from($contactFormData['email'])
                 ->to('diaroun74@yahoo.fr')
                 ->subject('vous avez reçu unn email')
-                ->text('Sender : '.$contactFormData['email'].\PHP_EOL.
+                ->text('Envoyé par : '.$contactFormData['email'].\PHP_EOL.
                     $contactFormData['message'],
                     'text/plain');
             $mailer->send($message);
