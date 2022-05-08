@@ -38,7 +38,7 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-            $this->addFlash("success", "L'ajout a été effectuée");
+            $this->addFlash("success", "L'ajout a été effectué");
             // do anything else you need here, like send an email
 
             return $this->redirectToRoute("admin_utilisateur");
