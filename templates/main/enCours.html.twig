@@ -32,6 +32,7 @@
                   <h3><a href="#">Un exemple de projets humanitaires</a></h3>
                 </div>
                 <!-- start flexslider -->
+                
                 <div class="flexslider">
                   <ul class="slides">
                     <li>
@@ -47,10 +48,20 @@
                 </div>
                 <!-- end flexslider -->
               </div>
-              <p>
-                Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. Fierent adipisci iracundia est ei, usu timeam persius
-                ea. Usu ea justo malis, pri quando everti electram ei, ex homero omittam salutatus sed.
-              </p>
+              {% for projetEnCour in projetEnCours %}
+             <div class="container mt-5 mb-5" style="max-width: 750px;">
+             <div class="row">
+                 <div class="card p-3">
+                    <div class="col">
+                    <h1 class="lead">{{ projetEnCour.nom }}</h1> 
+                    <div style="justify">
+                {{ projetEnCour.description }}
+              </div>
+                    </div>
+                 </div>
+            </div>  
+      </div>
+           {% endfor %}     
             </article>
           </div>
           <div class="span4">
@@ -63,12 +74,14 @@
                   
                 </ul>
               </div>
+               
               <div class="widget">
                 <h5 class="widgetheading">Déscription du Projet</h5>
                 <p>
                   Lorem ipsum dolor sit amet, unum suscipiantur te cum, vide magna ea eam. At eos wisi tractatos temporibus. Ne has omnis harum. Ei mea graece delenit nominati. Ut dolore albucius torquatos vel, choro gubergren no mel.
                 </p>
               </div>
+              
             </aside>
           </div>
         </div>
