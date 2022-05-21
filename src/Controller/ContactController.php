@@ -12,7 +12,7 @@ use Symfony\Component\Mailer\MailerInterface;
 class ContactController extends AbstractController
 {
     /**
-     * @Route("/contact", name="contact")
+     * @Route("/contact", name="main_contact")
      */
     public function index(Request $request, MailerInterface $mailer)
     {
