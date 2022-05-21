@@ -4,20 +4,79 @@
 
 {% block body %}
 
-
-    <div class="container">
-  <div class="row">
-    <div class="col">
-        <h1 class="text-primary text-center">Les commentaires</h1>
-        {% for projet in projets %}
-            <section class="col-4">
-                <h2 class="text-center">{{ projet.nom }}</h2>
-             </section>
-        {% endfor %}
-
-    </div>
-    </div>
-    </div>
-
-
+<section id="content">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <aside class="left-sidebar">
+              <div class="widget">
+              
+              </div>
+              <div class="widget">
+                <h5 class="widgetheading">Categories</h5>
+ {% for projet in projets %}
+                <ul class="cat">
+                  <li><i class="icon-angle-right"></i><a href="#">Projets :</a><span> {{ projet.nom }}</span></li>
+                 
+                </ul>
+                  {% endfor %}
+              </div>
+             
+            </aside>
+          </div>
+          {% for projet in projets %}
+          <div class="span8">
+            <article>
+              <div class="row">
+                <div class="span8">
+                  <div class="post-image">
+                    <div class="post-heading">
+                      <h4><a href="#">{{ projet.nom }}</a></h4>
+                    </div>
+                    
+                  </div>
+                  <p>
+                    {{ projet.description }}
+                  </p>
+                 
+                  <div class="bottom-article">
+                    <ul class="meta-post">
+                      <li><i class="icon-user"></i><a href="#"> Admin</a></li>
+                      <li><i class="icon-folder-open"></i><a href="#"> commentaires</a></li>
+                      <li><i class="icon-tags"></i><a href="#">Projets</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <!-- author info -->
+            <div class="about-author">
+            
+              <h5><strong><a href="#">John doe</a></strong></h5>
+              <p>
+                Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper ad qui, est rebum nulla argumentum ei.
+              </p>
+            </div>
+            <div class="comment-area">
+              <h4>Commentaires</h4>
+              <div class="media">
+              
+                <div class="media-body">
+                  <div class="media-content">
+                    <h6><span>March 12, 2013</span> Karen medisson</h6>
+                    <p>
+                      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    </p>
+                    <a href="#" class="align-right">Repondre</a>
+                  </div>
+                </div>
+              </div>
+               {% endfor %}
+              
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 {% endblock %}
