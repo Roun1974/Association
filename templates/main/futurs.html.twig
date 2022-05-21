@@ -48,10 +48,14 @@
                 </div>
                 <!-- end flexslider -->
               </div>
-              <p>
-                Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. Fierent adipisci iracundia est ei, usu timeam persius
-                ea. Usu ea justo malis, pri quando everti electram ei, ex homero omittam salutatus sed.
-              </p>
+             <div class="row">
+        
+        {% for projetFutur in projetFuturs %}
+            <section class="col-4 mt-5">
+                <h2 class="text-center">{{ projetFutur.nom }}</h2>
+                <p>{{ projetFutur.description }}</p>
+            </section>
+        {% endfor %}
             </article>
           </div>
           <div class="span4">
