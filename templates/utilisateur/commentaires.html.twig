@@ -43,7 +43,7 @@
                   
                     <ul class="meta-post">
                       <li><i class="icon-user"></i><a href="#"> Admin</a></li>
-                      <li><i class="icon-folder-open"></i><a href="#"> commentaires</a></li>
+                      <li><i class="icon-folder-open"></i><a href="#"> Commentaires</a></li>
                       <li><i class="icon-tags"></i><a href="#">Projets</a></li>
                     </ul>
                   </div>
@@ -52,24 +52,27 @@
             </article>
             <!-- author info -->
               <h4 class="lead">Commentaires</h4>
+                {% for projet in projets %}
             <div class="about-author">
-            
-              <h5><strong><a href="#">John doe</a></strong></h5>
+              <h6>Publié par :<strong><a href="#"> Arona DIALLO</a></strong> le 22 mai 2022</h6>
+             
               <p>
                 Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper ad qui, est rebum nulla argumentum ei.
               </p>
+            
             </div>
+              {% endfor %}
             <div class="comment-area">
             
               <div class="media">
               
                 <div class="media-body">
                   <div class="media-content">
-                    <h6><span>March 12, 2013</span> Karen medisson</h6>
+                    <h6><span>Publié par :</span> Abou DIALLO  <span> le 22 mai 2022<span></h6>
                     <p>
                       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
                     </p>
-                    <a href="#" class="align-right">Repondre</a>
+                    <a href="#" class="btn btn-large btn-theme btn-rounded align-right">Repondre</a>
                   </div>
                 </div>
               </div>
