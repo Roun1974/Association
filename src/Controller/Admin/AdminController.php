@@ -2,8 +2,10 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Categories;
 use App\Entity\Projet;
 use App\Entity\Utilisateur;
+use App\Form\CategoriesType;
 use App\Form\ProjetType;
 use App\Form\RegistrationFormType;
 use App\Repository\ProjetRepository;
@@ -134,5 +136,26 @@ class AdminController extends AbstractController
         $entityManager->flush();
         $this->addFlash("success", "La suppression a été effectuée");
         return $this->redirectToRoute('admin_utilisateur');
+    }
+    // Ajout d'une categorie
+    /**
+     * @Route("/categorie/ajout", name="ajoutCategorie")
+     */
+    public function ajoutCategorie(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $categorie = new Categories();
+
+        $form = $this->createForm(CategoriesType::class, $categorie);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $entityManager->persist($categorie);
+            $entityManager->flush();
+            $this->addFlash("success", "L'ajout a été effectuée");
+            return $this->redirectToRoute('admin_categorie');
+        }
+        return $this->render('admin/admin/ajoutCategorie.html.twig', [
+            "form" => $form->createView(),
+        ]);
     }
 }

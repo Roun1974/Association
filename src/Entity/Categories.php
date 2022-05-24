@@ -27,7 +27,7 @@ class Categories
 
     /**
  * @Gedmo\Slug(fields={"name"})
- * @ORM\Column(length=128, unique=true)
+ * @ORM\Column(length=128)
  */
 private $slug;
    
@@ -74,6 +74,7 @@ private $slug;
     {
         return $this->slug;
     }
+   
 
     public function getParent(): ?self
     {
