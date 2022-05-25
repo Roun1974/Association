@@ -2,8 +2,10 @@
 
 namespace App\Controller\Utilisateur;
 
+use App\Entity\Annonces;
 use App\Entity\Commentaire;
 use App\Entity\Projet;
+use App\Form\AnnoncesType;
 use App\Form\CommentaireType;
 use App\Repository\CommentaireRepository;
 use App\Repository\ProjetRepository;
@@ -51,6 +53,26 @@ class utilisateurController extends AbstractController
             "form" => $form->createView()
         ]);
     }
+// Ajout d'une annonces
+    /**
+     * @Route("/annonces", name="ajoutAnnonce")
+     */
+    public function ajoutAnnonce(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $annonce = new Annonces();
 
+        $form = $this->createForm(AnnoncesType::class, $annonce);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $entityManager->persist($annonce);
+            $entityManager->flush();
+            $this->addFlash("success", "L'ajout a été effectuée");
+            return $this->redirectToRoute('utilisateur_annonces');
+        }
+        return $this->render('utilisateur/ajoutAnnonces.html.twig', [
+            "form" => $form->createView(),
+        ]);
+    }
 
 }
