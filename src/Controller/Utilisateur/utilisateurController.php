@@ -65,10 +65,14 @@ class utilisateurController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
+            $annonce->setUtilisateur($this->getUser());
+            $annonce->setActive(false);
+
+            $entityManager=$this->getDoctrine()->getManager();
             $entityManager->persist($annonce);
             $entityManager->flush();
             $this->addFlash("success", "L'ajout a été effectuée");
-            return $this->redirectToRoute('utilisateur_annonces');
+            return $this->redirectToRoute('utilisateur_listesProjet');
         }
         return $this->render('utilisateur/ajoutAnnonces.html.twig', [
             "form" => $form->createView(),

@@ -16,8 +16,12 @@ class AnnoncesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title',TextType::class)
-            ->add('content',TextareaType::class)
+            ->add('title',TextType::class,[
+                'attr' => ['placeholder' => 'Titre annonces ?'],
+            ])
+            ->add('content',TextareaType::class,[
+                'attr' => ['placeholder' => 'Contenu annonces ?'],
+            ])
             ->add('categories',EntityType::class,[
                 'class'=>Categories::class
             ])
