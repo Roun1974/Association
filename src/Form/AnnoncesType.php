@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+Use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class AnnoncesType extends AbstractType
 {
@@ -19,7 +20,7 @@ class AnnoncesType extends AbstractType
             ->add('title',TextType::class,[
                 'attr' => ['placeholder' => 'Titre annonces ?'],
             ])
-            ->add('content',TextareaType::class,[
+            ->add('content',CKEditorType::class,[
                 'attr' => ['placeholder' => 'Contenu annonces ?'],
             ])
             ->add('categories',EntityType::class,[
