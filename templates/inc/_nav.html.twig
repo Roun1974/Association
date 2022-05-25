@@ -135,7 +135,7 @@
                         <li><a href="{{ path('admin_projet') }}">Projets</a></li>
                         <li><a href="{{ path('utilisateur_listesProjet') }}">Lire message</a></li>
                         <li><a href="{{ path('utilisateur_commentaire') }}">envoyer un message</a></li>
-                        <li><a href="#">Partenaires</a></li>
+                        <li><a href="{{ path('utilisateur_ajoutAnnonce') }}">Ajouter une annonce</a></li>
                       
                       </ul>
                     </li>
@@ -145,6 +145,7 @@
                       <ul class="dropdown-menu">
                         <li><a href="{{ path('utilisateur_listesProjet') }}">Lire message</a></li>
                         <li><a href="{{ path('utilisateur_commentaire') }}">envoyer un message</a></li>
+                        <li><a href="{{ path('utilisateur_ajoutAnnonce') }}"> Ajouter une annonce </a></li>
                       </ul>
                     </li>
                      {% endif %}

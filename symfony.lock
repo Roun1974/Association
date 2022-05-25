@@ -128,6 +128,19 @@
     "gedmo/doctrine-extensions": {
         "version": "v3.7.0"
     },
+    "helios-ag/fm-elfinder-bundle": {
+        "version": "12.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "10.0",
+            "ref": "addd79a9903ee92664f4cff61eb6cdd1b95945e7"
+        },
+        "files": [
+            "./config/packages/fm_elfinder.yaml",
+            "./config/routes/fm_elfinder.yaml"
+        ]
+    },
     "jms/metadata": {
         "version": "2.6.1"
     },
@@ -264,6 +277,9 @@
         "files": [
             "./config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "studio-42/elfinder": {
+        "version": "2.1.61"
     },
     "symfony/apache-pack": {
         "version": "1.0",
