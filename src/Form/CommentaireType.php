@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Commentaire;
 use App\Entity\Projet;
 use App\Entity\Utilisateur;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,7 +15,7 @@ class CommentaireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('commentaire')
+            ->add('commentaire',CKEditorType::class)
 
             ->add('projet', null,[
                 'class' => Projet::class,
