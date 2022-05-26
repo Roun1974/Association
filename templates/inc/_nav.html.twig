@@ -113,7 +113,9 @@
                     <li class="dropdown">
                       <a href="#">Blog<i class="icon-angle-down"></i></a>
                       <ul class="dropdown-menu">
+                        {% if  app.user %}
                         <li><a href="{{ path('main_annonces') }}">Annonces</a></li>
+                           {% endif %}
                         <li><a href="{{ path('main_contact') }}">Nous contacter</a></li>
                        
                         

@@ -83,7 +83,7 @@
             </aside>
           </div>
           <div class="span8">
-           {% for annonce in app.user.annonces %}
+           {% for annonce in app.user.Annonces %}
         
             <article>
               <div class="row">
@@ -115,8 +115,8 @@
                     <ul class="meta-post">
                       <li><i class="icon-calendar"></i><a href="#"> Mar 23, 2013</a></li>
                       <li><i class="icon-user"></i><a href="#">  {{ app.user.nom }}  {{ app.user.prenom }}</a></li>
-                      <li><i class="icon-folder-open"></i><a href="#">  {{ annonce.title }}</a></li>
-                      <li><i class="icon-comments"></i><a href="#"> {{ app.user.annonces|length }} Comments</a></li>
+                      <li><i class="icon-folder-open"></i><a href="#">  {{ annonce.content }}</a></li>
+                      <li><i class="icon-comments"></i><a href="#">4 Comments</a></li>
                     </ul>
                     <a href="#" class="pull-right">Lire la suite ... <i class="icon-angle-right"></i></a>
                   </div>
