@@ -20,7 +20,7 @@ class ContactType extends AbstractType
             ->add('email',EmailType::class, [
             ])
             ->add('message', CKEditorType::class, [
-                'attr' => ['rows' => 6],
+               
             ])
         ;
     }

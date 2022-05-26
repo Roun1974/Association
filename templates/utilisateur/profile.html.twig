@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page profile utilisateur{% endblock %}
+
+{% block body %}
+      <section id="inner-headline">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="inner-heading">
+              <h2>Profile utilisateur</h2>
+            </div>
+          </div>
+          <div class="span8">
+            <ul class="breadcrumb">
+              <li><a href="#"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+              <li><a href="#">Profile</a><i class="icon-angle-right"></i></li>
+              <li class="active">utilisateur</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="content">
+      <div class="container mt-5 mb-5" >
+        <!-- Default table -->
+       
+          <div class="span6">
+            <h3> Profile de : {{ app.user.nom }} <strong>{{ app.user.prenom }} <strong></h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>
+                   Nom 
+                  </th>
+                  <th>
+                    Prénom
+                  </th>
+                  <th>
+                    Email
+                  </th>
+                  <th>
+                   Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="success">
+                  <td>
+                    {{ app.user.nom }}
+                  </td>
+                  <td>
+                    {{ app.user.prenom }}
+                  </td>
+                  <td>
+                   {{ app.user.email }}
+                  </td>
+                  <td >
+                  <a href="#" data-toggle="modal">Modifier</a>
+                  </td>
+                   
+                </tr>
+                <tr class="error">
+                  <td>
+                    2
+                  </td>
+                  <td>
+                    TB - Monthly
+                  </td>
+                  <td>
+                    02/04/2012
+                  </td>
+                  <td>
+                    Declined
+                  </td>
+                </tr>
+                <tr class="warning">
+                  <td>
+                    3
+                  </td>
+                  <td>
+                    TB - Monthly
+                  </td>
+                  <td>
+                    03/04/2012
+                  </td>
+                  <td>
+                    Pending
+                  </td>
+                </tr>
+                <tr class="info">
+                  <td>
+                    4
+                  </td>
+                  <td>
+                    TB - Monthly
+                  </td>
+                  <td>
+                    04/04/2012
+                  </td>
+                  <td>
+                    Call in to confirm
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+{% endblock %}

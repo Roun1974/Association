@@ -9,6 +9,7 @@ use App\Form\AnnoncesType;
 use App\Form\CommentaireType;
 use App\Repository\CommentaireRepository;
 use App\Repository\ProjetRepository;
+use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,6 +31,17 @@ class utilisateurController extends AbstractController
 
         return $this->render('utilisateur/commentaires.html.twig', [
             'projets' => $projets,
+        ]);
+    }
+    /**
+     * @Route("/profile", name="ProfileUtilisateur")
+     */
+    public function utilisateurProfil(UtilisateurRepository $utilisateurRepository): Response
+    {
+        $utilisateur = $utilisateurRepository->findby([]);
+
+        return $this->render('utilisateur/profile.html.twig', [
+            'utilisateur' => $utilisateur,
         ]);
     }
 
