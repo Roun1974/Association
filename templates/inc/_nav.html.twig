@@ -30,7 +30,6 @@
                <a href="{{ path('app_logout') }}" data-toggle="modal">Se déconnecter ({{ app.user.prenom }})</a>
                 {% elseif  app.user %}
                 <a href="{{ path('app_logout') }}" data-toggle="modal">Se déconnecter ({{ app.user.prenom }})</a>
-
                  {% else %}
                 <li><a href="{{ path('app_register') }}" data-toggle="modal"><i class="icon-user"></i> S’enregistrer</a></li>
                  <li><a href="{{ path('app_login') }}" data-toggle="modal">Connexion</a></li>
@@ -44,27 +43,22 @@
                 <h4 id="mySignupModalLabel">Créer un<strong> compte</strong></h4>
               </div>
               <div class="modal-body">
-                
               </div>
             </div>
             <!-- end signup modal -->
             <!-- Sign in Modal -->
             <div id="mySignin" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySigninModalLabel" aria-hidden="true">
               <div class="modal-header">
-                
               </div>
               <div class="modal-body">
-                
               </div>
             </div>
             <!-- end signin modal -->
             <!-- Reset Modal -->
             <div id="myReset" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="myResetModalLabel" aria-hidden="true">
               <div class="modal-header">
-                
               </div>
               <div class="modal-body">
-               
               </div>
             </div>
             <!-- end reset modal -->
@@ -74,7 +68,6 @@
           <div class="span4">
             <div class="logo">
               <a href="{{ path('main_accueil') }}"><img src="assets/img/logo.png" alt="" class="logo" /></a>
-             
             </div>
           </div>
           <div class="span8">
@@ -85,13 +78,11 @@
                     <li class="dropdown active">
                       <a href="{{ path('main_accueil') }}">Acceuil</i></a>
                     </li>
-
                     <li class="dropdown">
                       <a href="#">Nos projets <i class="icon-angle-down"></i></a>
                       <ul class="dropdown-menu">
                         <li><a href="{{ path('main_projetTermine') }}">Projets réalisés</a></li>
                         <li class="dropdown"><a href="{{ path('main_projetEnCour') }}">Projets en cours <i class="icon-angle-right"></i></a>
-                         
                         </li>
                         <li class="dropdown"><a href="{{ path('main_projetFutur') }}">Projets futurs <i class="icon-angle-right"></i></a>
                           <ul class="dropdown-menu sub-menu-level1">
@@ -106,23 +97,16 @@
                       <a href="#">Notre association <i class="icon-angle-down"></i></a>
                       <ul class="dropdown-menu">
                         <li><a href="{{ path('main_apropos') }}">Qui sommes nous ?</a></li>
-                        
                         <li><a href="{{ path('main_temoignage') }}">Témoignages</a></li>
                       </ul>
                     </li>
                     <li class="dropdown">
                       <a href="#">Blog<i class="icon-angle-down"></i></a>
                       <ul class="dropdown-menu">
-                        {% if  app.user %}
                         <li><a href="{{ path('main_annonces') }}">Annonces</a></li>
-                           {% endif %}
                         <li><a href="{{ path('main_contact') }}">Nous contacter</a></li>
-                       
-                        
                       </ul>
                     </li>
-                    
-                    
                     <li class="dropdown">
                       <a href="{{ path('main_video') }}">Videos </a>
                     </li>
@@ -137,9 +121,7 @@
                         <li><a href="{{ path('admin_projet') }}">Projets</a></li>
                         <li><a href="{{ path('utilisateur_listesProjet') }}">Lire message</a></li>
                         <li><a href="{{ path('utilisateur_commentaire') }}">envoyer un message</a></li>
-                        <li><a href="{{ path('utilisateur_ajoutAnnonce') }}">Ajouter une annonce</a></li>
-                      
-                      </ul>
+                        <li><a href="{{ path('utilisateur_ajoutAnnonce') }}">Ajouter une annonce</a></li>                      </ul>
                     </li>
                      {% elseif  app.user %}
                       <li class="dropdown">
