@@ -1,27 +1,21 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Les commentaires{% endblock %}
-
 {% block body %}
-
 <section id="content">
       <div class="container">
         <div class="row">
           <div class="span4">
             <aside class="left-sidebar">
               <div class="widget">
-              
               </div>
               <div class="widget">
                 <h5 class="widgetheading">Categories</h5>
  {% for projet in projets %}
                 <ul class="cat">
                   <li><i class="icon-angle-right"></i><a href="#">Projets :</a><span> {{ projet.nom }}</span></li>
-                 
                 </ul>
                   {% endfor %}
               </div>
-             
             </aside>
           </div>
           {% for projet in projets %}
@@ -33,16 +27,13 @@
                     <div class="post-heading">
                       <h4><a href="#">{{ projet.nom }}</a></h4>
                     </div>
-                    
                   </div>
                   <p>
                     {{ projet.description }}
                   </p>
-                 
                   <div class="bottom-article">
-                  
                     <ul class="meta-post">
-                      <li><i class="icon-user"></i><a href="#"> Admin</a></li>
+                      <li><i class="icon-user"></i><a href="#"> {{ app.user.nom }} {{ app.user.prenom }}</a></li>
                       <li><i class="icon-folder-open"></i><a href="#"> Commentaires</a></li>
                       <li><i class="icon-tags"></i><a href="#">Projets</a></li>
                     </ul>
@@ -50,36 +41,21 @@
                 </div>
               </div>
             </article>
-            <!-- author info -->
               <h4 class="lead">Commentaires</h4>
-                {% for projet in projets %}
-            <div class="about-author">
-              <h6><span>Publié par :</span><strong><a href="#"> Arona DIALLO</a></strong> <span>le 22 mai 2022</span></h6>
-             
-              <p>
-                Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei nibh consectetuer, semper ad qui, est rebum nulla argumentum ei.
-              </p>
-            
-            </div>
-              {% endfor %}
-              {% for projet in projets %}
+              {% for commentaire in projet.commentaires %}
             <div class="comment-area">
-             
               <div class="media">
-              
                 <div class="media-body">
                   <div class="media-content">
-                    <h6><span>Publié par :</span> Abou DIALLO  <span> le 22 mai 2022<span></h6>
+                    <h6><span>Publié par :</span> {{ app.user.nom }} {{ app.user.prenom }}  <span> le 22 mai 2022<span></h6>
                     <p>
-                      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </p><a href="#" class="btn btn-success btn-theme btn-rounded align-right">Repondre</a>
+                     {{ commentaire.commentaire|raw }}
+                    </p>
                   </div> 
                 </div>
-               
               </div>{% endfor %}
                {% endfor %}
-              <div class="pagination"> <ul> <li class="disabled"><a href="#">Prev</a></li> <li class="active"><a href="#">1</a></li> <li><a href="#">2</a></li> <li><a href="#">3</a></li><li><a href="#">4</a></li> <li><a href="#">5</a></li><li><a href="#">Next</a></li> </ul> </div>
-             
+              <div class="pagination"><ul> <li class="disabled"><a href="#">Prev</a></li> <li class="active"><a href="#">1</a></li> <li><a href="#">2</a></li> <li><a href="#">3</a></li><li><a href="#">4</a></li> <li><a href="#">5</a></li><li><a href="#">Next</a></li> </ul> </div>
             </div>
           </div>
         </div>
