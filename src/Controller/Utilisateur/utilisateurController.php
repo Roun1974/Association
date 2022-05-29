@@ -4,9 +4,11 @@ namespace App\Controller\Utilisateur;
 
 use App\Entity\Annonces;
 use App\Entity\Commentaire;
+use App\Entity\Comments;
 use App\Entity\Projet;
 use App\Form\AnnoncesType;
 use App\Form\CommentaireType;
+use App\Form\CommentsType;
 use App\Repository\CommentaireRepository;
 use App\Repository\ProjetRepository;
 use App\Repository\UtilisateurRepository;
@@ -57,6 +59,7 @@ class utilisateurController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
             $entityManager->persist($commentaire);
             $entityManager->flush();
+            $this->addFlash("success", "Votre commentaire a été ajouté avec succes");
             return $this->redirectToRoute('utilisateur_listesProjet');
         }
 
@@ -65,6 +68,7 @@ class utilisateurController extends AbstractController
             "form" => $form->createView()
         ]);
     }
+  
 // Ajout d'une annonces
     /**
      * @Route("/annonces", name="ajoutAnnonce")
@@ -83,8 +87,8 @@ class utilisateurController extends AbstractController
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->persist($annonce);
             $entityManager->flush();
-            $this->addFlash("success", "L'ajout a été effectuée");
-            return $this->redirectToRoute('utilisateur_listesProjet');
+            $this->addFlash("success", "Votre annonce a été ajoutée avec succes");
+            return $this->redirectToRoute('main_annonces');
         }
         return $this->render('utilisateur/ajoutAnnonces.html.twig', [
             "form" => $form->createView(),

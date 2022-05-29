@@ -14,8 +14,10 @@ class AnnoncesController extends AbstractController
     public function listesannonces(AnnoncesRepository $annoncesRepository): Response
     {
         $annonce = $this->getDoctrine()->getRepository(Annonces::class)->findAll();
+
         return $this->render('main/annonces.html.twig', [
             'annonces' => $annonce
         ]);
+        
     }
 }

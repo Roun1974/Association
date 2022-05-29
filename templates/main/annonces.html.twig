@@ -9,6 +9,7 @@
         <div class="row">
           <div class="span4">
             <div class="inner-heading">
+            
               <h2>Blog annonces</h2>
             </div>
           </div>
@@ -34,6 +35,7 @@
                 </form>
               </div>
               <div class="widget">
+               
                 <h5 class="widgetheading">Titre des annonces</h5>
                 {% for annonce in annonces %}
                 <ul class="cat">
@@ -55,13 +57,18 @@
             </aside>
           </div>
           <div class="span8">
+          {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
            {% for annonce in annonces %}
             <article>
               <div class="row">
                 <div class="span8">
                   <div class="post-slider">
                     <div class="post-heading">
-                      <h2>Titre : {{ annonce.title }}</h2>
+                      <h4>Titre : {{ annonce.title }}</h4>
                     </div>
                     <!-- start flexslider -->
                     <div class="flexslider">
@@ -83,15 +90,44 @@
                 </div>
               </div>
             </article>
+             <article>
+              <div class="row">
+                <div class="span8">
+                  <div class="post-slider">
+                    <div class="post-heading">
+                      <h4>Commentaires</h4>
+                    </div>
+                  </div>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae sem vestibulum, pellentesque eros nec, volutpat turpis. In a lorem odio. Sed tortor ante, posuere a elit non, semper condimentum urna. Vivamus blandit leo quis facilisis laoreet. Morbi euismod metus non nunc sollicitudin, nec faucibus tellus tempus. In dictum ut quam vel bibendum. Nam a dui mattis metus laoreet hendrerit quis fermentum ante. Duis suscipit justo arcu, vel finibus turpis porttitor vel. </p>
+                </div>
+              </div>
+            </article>
             {% endfor %}
+            <article>
+              <div class="row">
+                <div class="span8">
+                  <div class="post-slider">
+                    <div class="post-heading">
+                      <h4>Ajouter un commentaire</h4>
+                    </div>
+                  </div>
+                     <p>Ici le formulaire pour ajouter votre commentaire</p>
+                </div>
+              </div>
+            </article>
+            <section>
             <div id="pagination">
               <span class="all">Page 1 of 3</span>
               <span class="current">1</span>
               <a href="#" class="inactive">2</a>
               <a href="#" class="inactive">3</a>
             </div>
+            </section>
           </div>
         </div>
       </div>
+      
     </section>
+    
+  
 {% endblock %}
