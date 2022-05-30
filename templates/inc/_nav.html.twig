@@ -120,7 +120,8 @@
                         <li><a href="{{ path('admin_projet') }}">Projets</a></li>
                         <li><a href="{{ path('utilisateur_listesProjet') }}">Lire message</a></li>
                         <li><a href="{{ path('utilisateur_commentaire') }}">envoyer un message</a></li>
-                        <li><a href="{{ path('utilisateur_ajoutAnnonce') }}">Ajouter une annonce</a></li>                      </ul>
+                        <li><a href="{{ path('utilisateur_ajoutAnnonce') }}">Ajouter une annonce</a></li>   
+                        <li><a href="{{ path('utilisateur_profileUtilisateur') }}"> Mon profile </a></li>                   </ul>
                     </li>
                      {% elseif  app.user %}
                       <li class="dropdown">
@@ -129,6 +130,7 @@
                         <li><a href="{{ path('utilisateur_listesProjet') }}">Lire message</a></li>
                         <li><a href="{{ path('utilisateur_commentaire') }}">envoyer un message</a></li>
                         <li><a href="{{ path('utilisateur_ajoutAnnonce') }}"> Ajouter une annonce </a></li>
+                        <li><a href="{{ path('utilisateur_ProfileUtilisateur') }}"> Mon profile </a></li>
                       </ul>
                     </li>
                      {% endif %}

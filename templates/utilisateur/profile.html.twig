@@ -9,40 +9,84 @@
         <!-- Default table -->
        
           <div class="span6">
-            <h3> Profile de : {{ app.user.nom }} <strong>{{ app.user.prenom }} <strong></h3>
+            <h3> Profile de : {{ app.user.nom }} {{ app.user.prenom }} </h3>
             <table class="table">
-              <thead>
-                <tr>
-                  <th>
-                   Nom 
-                  </th>
-                  <th>
-                    Prénom
-                  </th>
-                  <th>
-                    Email
-                  </th>
-                  <th>
-                   Actions
-                  </th>
-                </tr>
-              </thead>
+              
               <tbody>
                 <tr class="success">
                   <td>
+                   <strong> Nom :<strong>
+                  </td>
+                  <td>
+                   <strong> {{ app.user.prenom }}<strong>
+                  </td>
+                </tr>
+                <tr class="success">
+                  <td>
+                   <strong> Prenom :<strong>
+                  </td>
+                  <td>
                     {{ app.user.nom }}
                   </td>
-                  <td>
-                    {{ app.user.prenom }}
-                  </td>
-                  <td>
-                   {{ app.user.email }}
-                  </td>
-                  <td >
-                  <a href="#" data-toggle="modal">Modifier</a>
-                  </td>
-                   
                 </tr>
+                <tr class="success">
+                  <td>
+                   <strong> E- mail :<strong>
+                  </td>
+                  <td>
+                    {{ app.user.email}}
+                  </td>
+                </tr>
+                 <tr class="success">
+                  <td>
+                   <strong>  Téléphone :<strong>
+                  </td>
+                  <td>
+                    {{ app.user.telephone}}
+                  </td>
+                </tr>
+                 <tr class="success">
+                  <td>
+                   <strong> Rue :<strong>
+                  </td>
+                  <td>
+                    {{ app.user.rue}}
+                  </td>
+                </tr>
+                 <tr class="success">
+                  <td>
+                   <strong> Code postal :<strong>
+                  </td>
+                  <td>
+                    {{ app.user.codepostal}}
+                  </td>
+                </tr>
+                <tr class="success">
+                  <td>
+                   <strong> Ville :<strong>
+                  </td>
+                  <td>
+                    {{ app.user.ville}}
+                  </td>
+                </tr>
+                <tr class="success">
+                  <td>
+                   <strong> Pays :<strong>
+                  </td>
+                  <td>
+                    {{ app.user.pays}}
+                  </td>
+                </tr>
+                <tr class="success">
+                  <td>
+                   <strong>Action :<strong>
+                  </td>
+                  <td>
+                   <a  href="#">Modifier mon Profile</a>
+                  </td>
+                </tr>
+                
+                
                 
               </tbody>
             </table>
