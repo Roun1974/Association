@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Editprofile de : {{ app.user.nom }} {{ app.user.prenom }} {% endblock %}
+{% block body %}
+    <section id="content">
+      <div class="container " >
+        <!-- Default table -->
+          <div class="span6">
+           {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+         {% endfor %}
+            <div class="span6">
+                  {{form(form)}}
+            </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

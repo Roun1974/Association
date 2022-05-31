@@ -21,7 +21,7 @@
                    <strong> {{ app.user.prenom }}<strong>
                   </td>
                 </tr>
-                <tr class="success">
+                <tr class="error">
                   <td>
                    <strong> Prenom :<strong>
                   </td>
@@ -37,7 +37,7 @@
                     {{ app.user.email}}
                   </td>
                 </tr>
-                 <tr class="success">
+                 <tr class="warning">
                   <td>
                    <strong>  Téléphone :<strong>
                   </td>
@@ -53,7 +53,7 @@
                     {{ app.user.rue}}
                   </td>
                 </tr>
-                 <tr class="success">
+                 <tr class="info">
                   <td>
                    <strong> Code postal :<strong>
                   </td>
@@ -69,7 +69,7 @@
                     {{ app.user.ville}}
                   </td>
                 </tr>
-                <tr class="success">
+                <tr class="primary">
                   <td>
                    <strong> Pays :<strong>
                   </td>
@@ -82,7 +82,7 @@
                    <strong>Action :<strong>
                   </td>
                   <td>
-                   <a  href="#">Modifier mon Profile</a>
+                   <a  href="{{ path('utilisateur_editProfile') }}">Modifier mon Profile</a>
                   </td>
                 </tr>
                 

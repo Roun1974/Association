@@ -6,9 +6,11 @@ use App\Entity\Annonces;
 use App\Entity\Commentaire;
 use App\Entity\Comments;
 use App\Entity\Projet;
+use App\Entity\Utilisateur;
 use App\Form\AnnoncesType;
 use App\Form\CommentaireType;
 use App\Form\CommentsType;
+use App\Form\EditProfileType;
 use App\Repository\CommentaireRepository;
 use App\Repository\ProjetRepository;
 use App\Repository\UtilisateurRepository;
@@ -94,5 +96,26 @@ class utilisateurController extends AbstractController
             "form" => $form->createView(),
         ]);
     }
-
+    // Ajout d'une annonces
+    /**
+     * @Route("/editProfile", name="editProfile")
+     */
+    public function editProfile(
+    Request $request,
+    EntityManagerInterface $entityManager): Response
+{
+    $utilisateur=$this->getUser();
+$form = $this->createForm(EditProfileType::class, $utilisateur);
+$form->handleRequest($request);
+if ($form->isSubmitted() && $form->isValid()){
+$entityManager->persist($utilisateur);
+$entityManager->flush();
+$this->addFlash("success", "Votre profile a été modifié avec succès");
+return $this->redirectToRoute('utilisateur_editProfile');
+}
+return $this->render('utilisateur/editprofile.html.twig', [
+"Utilisateur" => $utilisateur,
+"form" => $form->createView()
+]);
+}
 }
