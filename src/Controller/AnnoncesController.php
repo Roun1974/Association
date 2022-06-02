@@ -22,7 +22,7 @@ class AnnoncesController extends AbstractController
         $annonces = $paginator->paginate(
             $donnees, // Requête contenant les données à paginer (ici nos articles)
             $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
-            3 // Nombre de résultats par page
+            2 // Nombre de résultats par page
         );
         
 

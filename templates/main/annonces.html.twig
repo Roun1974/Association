@@ -122,19 +122,12 @@
                   <div class="post-slider">
                     <div class="post-heading">
                       <h6>Commentaires</h6>
+                      {% for comment in annonce.comments %}
+                      <p>Publié le {{comment.createdAt|date("d/m/Y H:i") }}</p>
+                      {% endfor %}
                     </div>
                   </div>
-                    {% for comment in annonce.comments %}
-					{% if comment.parent == null %}
-						<h3>Commentaire de {{comment.nickname}}</h3>
-						<p>Publié le {{comment.createdAt|date("d/m/Y H:i") }}</p>
-						<div>{{comment.content|raw}}</div>
-						<p><a href="#ajout-commentaire" data-reply data-id="{{comment.id}}" class="btn primary press">Répondre</a></p>
-
-						{# On affiche les réponses #}
-					
-					{% endif %}
-				{% endfor %}
+                   
                 </div>
               </div>
             </article>
@@ -160,4 +153,5 @@
         </div>
       </div>
     </section>
+   
 {% endblock %}

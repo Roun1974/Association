@@ -101,24 +101,31 @@ class utilisateurController extends AbstractController
      /**
      * @Route("/comments", name="ajoutcomments")
      */
-    public function comments(Request $request, EntityManagerInterface $entityManager, AnnoncesRepository $annoncesRepository): Response
+    public function comments(Request $request, EntityManagerInterface $entityManager,$slug, AnnoncesRepository $annoncesRepository): Response
     {
-        
+        // Partie commentaires
+        // On crée le commentaire "vierge"
         $comment = new Comments();
         
-        $form = $this->createForm(CommentsType::class, $comment);
+        $annonce = $annoncesRepository->findOneBy(['slug' => $slug]);
+         // On génère le formulaire
+        $commentForm = $this->createForm(CommentsType::class, $comment);
+        $commentForm->handleRequest($request);
 
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()){
+        // Traitement du formulaire
+        if ($commentForm->isSubmitted() && $commentForm->isValid()){
             $comment->setCreatedAt(new DateTime());
+            $comment->setAnnonces($annonce);
+
+            
              // On récupère le contenu du champ parentid
-             $parentid = $form->get("parentid")->getData();
+             $parentid = $commentForm->get("parentid")->getData();
 
              // On va chercher le commentaire correspondant
              $entityManager = $this->getDoctrine()->getManager();
  
              if($parentid != null){
-                 $parent = $entityManager->getRepository(Comments::class)->find($parentid);
+                 $parent = $entityManager->getRepository(Comments::class)->findBy($parentid);
              }
  
              // On définit le parent
@@ -126,12 +133,13 @@ class utilisateurController extends AbstractController
             $entityManager->persist($comment);
             $entityManager->flush();
             $this->addFlash("success", "Votre commentaire a été ajouté avec succes");
-            return $this->redirectToRoute('main_annonces');
+            return $this->redirectToRoute('main_annonces',['slug' => $annonce->getSlug()]);
         }
 
         return $this->render('utilisateur/ajoutComments.html.twig', [
+            'annonce' => $annonce,
             "comment" => $comment,
-            "commentForm" => $form->createView()
+            "commentForm" => $commentForm->createView()
         ]);
     }
     // Ajout d'une annonces
