@@ -4,8 +4,9 @@
 <div class="container">
   <div class="row">
     <div class="col">
-    {{ form(commentform) }}
-        {{ commentform(commentform) }}
+   {{ form_start(commentForm) }}
+        {{ form_widget(commentForm) }}
+    {{ form_end(commentForm) }}
 </div>
     </div>
     </div>

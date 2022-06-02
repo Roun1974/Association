@@ -124,7 +124,17 @@
                       <h6>Commentaires</h6>
                     </div>
                   </div>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae sem vestibulum, pellentesque eros nec, volutpat turpis. In a lorem odio. Sed tortor ante, posuere a elit non, semper condimentum urna. Vivamus blandit leo quis facilisis laoreet. Morbi euismod metus non nunc sollicitudin, nec faucibus tellus tempus. In dictum ut quam vel bibendum. Nam a dui mattis metus laoreet hendrerit quis fermentum ante. Duis suscipit justo arcu, vel finibus turpis porttitor vel. </p>
+                    {% for comment in annonce.comments %}
+					{% if comment.parent == null %}
+						<h3>Commentaire de {{comment.nickname}}</h3>
+						<p>Publié le {{comment.createdAt|date("d/m/Y H:i") }}</p>
+						<div>{{comment.content|raw}}</div>
+						<p><a href="#ajout-commentaire" data-reply data-id="{{comment.id}}" class="btn primary press">Répondre</a></p>
+
+						{# On affiche les réponses #}
+					
+					{% endif %}
+				{% endfor %}
                 </div>
               </div>
             </article>
@@ -137,37 +147,17 @@
                      
                     </div>
                   </div>
-                      <h4>Ajouter un commentaire</h4>
-              <form id="commentform" action="#" method="post" name="comment-form">
-                <div class="row">
-                  <div class="span4">
-                    <input type="text" placeholder="Entrer votre nom " />
-                  </div>
-                  <div class="span4">
-                    <input type="text" placeholder="Entrer votre email " />
-                  </div>
-                  <div class="span4 margintop10">
-                    <input type="text" placeholder="Entrer votre site web" />
-                  </div>
-                  <div class="span8 margintop10">
-                    <p>
-                      <textarea rows="12" class="input-block-level" placeholder=""></textarea>
-                    </p>
-                    <p>
-                      <button class="btn btn-theme margintop10" type="submit">Ajouter commentaire</button>
-                    </p>
-                  </div>
-                </div>
-              </form>
+                      <h6><a href="{{ path('utilisateur_ajoutcomments') }}">Ajouter un commentaire</a></h6>
+               
                 </div>
               </div>
             </article>
             <section>
+           <div class="pagination"><ul> <li class="disabled"><a href="#">Prev</a></li> <li class="active"><a href="#">1</a></li> <li><a href="#">2</a></li> <li><a href="#">3</a></li><li><a href="#">4</a></li> <li><a href="#">5</a></li><li><a href="#">Next</a></li> </ul> </div>
             {{ knp_pagination_render(annonces) }}
             </section>
           </div>
         </div>
       </div>
-      
     </section>
 {% endblock %}

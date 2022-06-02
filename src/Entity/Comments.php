@@ -40,18 +40,18 @@ class Comments
     private $nickname;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
     private $created_at;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $rgpd;
+    private $rgpd = null;
 
     /**
      * @ORM\ManyToOne(targetEntity=Annonces::class, inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $annonces;
 
@@ -123,12 +123,12 @@ class Comments
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): self
+    public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
 
@@ -172,7 +172,7 @@ class Comments
     }
 
     /**
-     * @return Collection<int, self>
+     * @return Collection|self[]
      */
     public function getReplies(): Collection
     {

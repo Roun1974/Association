@@ -5,12 +5,14 @@ namespace App\Controller\Utilisateur;
 use App\Entity\Annonces;
 use App\Entity\Commentaire;
 use App\Entity\Comments;
+use DateTime;
 use App\Entity\Projet;
 use App\Entity\Utilisateur;
 use App\Form\AnnoncesType;
 use App\Form\CommentaireType;
 use App\Form\CommentsType;
 use App\Form\EditProfileType;
+use App\Repository\AnnoncesRepository;
 use App\Repository\CommentaireRepository;
 use App\Repository\ProjetRepository;
 use App\Repository\UtilisateurRepository;
@@ -94,6 +96,42 @@ class utilisateurController extends AbstractController
         }
         return $this->render('utilisateur/ajoutAnnonces.html.twig', [
             "form" => $form->createView(),
+        ]);
+    }
+     /**
+     * @Route("/comments", name="ajoutcomments")
+     */
+    public function comments(Request $request, EntityManagerInterface $entityManager, AnnoncesRepository $annoncesRepository): Response
+    {
+        
+        $comment = new Comments();
+        
+        $form = $this->createForm(CommentsType::class, $comment);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $comment->setCreatedAt(new DateTime());
+             // On récupère le contenu du champ parentid
+             $parentid = $form->get("parentid")->getData();
+
+             // On va chercher le commentaire correspondant
+             $entityManager = $this->getDoctrine()->getManager();
+ 
+             if($parentid != null){
+                 $parent = $entityManager->getRepository(Comments::class)->find($parentid);
+             }
+ 
+             // On définit le parent
+             $comment->setParent($parent ?? null);
+            $entityManager->persist($comment);
+            $entityManager->flush();
+            $this->addFlash("success", "Votre commentaire a été ajouté avec succes");
+            return $this->redirectToRoute('main_annonces');
+        }
+
+        return $this->render('utilisateur/ajoutComments.html.twig', [
+            "comment" => $comment,
+            "commentForm" => $form->createView()
         ]);
     }
     // Ajout d'une annonces

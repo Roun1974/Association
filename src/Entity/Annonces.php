@@ -40,7 +40,7 @@ class Annonces
      * * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime_immutable")
      */
-    private $creaed_at;
+    private $created_at;
 
     /**
      * @ORM\Column(type="boolean")
@@ -105,7 +105,7 @@ class Annonces
 
     public function getCreaedAt(): ?\DateTimeImmutable
     {
-        return $this->creaed_at;
+        return $this->created_at;
     }
 
     public function getActive(): ?bool
