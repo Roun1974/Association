@@ -121,12 +121,10 @@
                 <div class="span8">
                   <div class="post-slider">
                     <div class="post-heading">
-                      <h6>Commentaires</h6>
                       {% for comment in annonce.comments %}
-                      <h6>Commentaire de {{comment.nickname}}</h6>
-                      <p>Publié le {{comment.createdAt|date("d/m/Y H:i") }}</p>
+                      <p>Commentaire de <strong>{{comment.nickname}}</strong> publié le  <strong>{{comment.createdAt|date("d/m/Y H:i") }}  </strong> </p>
                       <div>{{comment.content|raw}}</div>
-                      <p><a href="#" data-reply data-id="{{comment.id}}" class="btn primary press">Répondre</a></p>
+                      <p><a href="{{ path('utilisateur_ajoutcomments') }}" data-reply data-id="{{comment.id}}" class="btn primary press">Répondre</a></p>
                       {% endfor %}
                     </div>
                   </div>
