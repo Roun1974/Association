@@ -64,6 +64,11 @@ class Annonces
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nickname;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -103,7 +108,7 @@ class Annonces
         return $this;
     }
 
-    public function getCreaedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at;
     }
@@ -170,6 +175,18 @@ class Annonces
                 $comment->setAnnonces(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNickname(): ?string
+    {
+        return $this->nickname;
+    }
+
+    public function setNickname(string $nickname): self
+    {
+        $this->nickname = $nickname;
 
         return $this;
     }

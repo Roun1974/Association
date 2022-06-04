@@ -20,6 +20,9 @@ class AnnoncesType extends AbstractType
             ->add('title',TextType::class,[
                 'attr' => ['placeholder' => 'Titre annonces ?'],
             ])
+            ->add('nickname',TextType::class,[
+                'attr' => ['placeholder' => 'Votre pseudo ?'],
+            ])
             ->add('content',CKEditorType::class,[
                 'attr' => ['placeholder' => 'Contenu annonces ?'],
             ])

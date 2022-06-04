@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Etat;
 use App\Entity\Projet;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,9 +17,7 @@ class ProjetType extends AbstractType
             ->add('nom', null, [
                 'attr' => ['placeholder' => 'Nom du projet ?'],
             ])
-            ->add('description', null, [
-                'attr' => ['placeholder' => 'Description du projet ?'],
-            ])
+            ->add('description', CKEditorType::class)
             ->add('etat', null,[
                 'class' => Etat::class,
                 'choice_label' => 'libelle'
