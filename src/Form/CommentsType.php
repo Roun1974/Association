@@ -37,7 +37,10 @@ class CommentsType extends AbstractType
                     'class'=>'form-control'
                 ]
             ])
-            ->add('rgpd',CheckboxType::class)
+            ->add('rgpd',CheckboxType::class,
+            [
+                'label' => 'J\'accepte que mes informations soient stockées dans la base de données de ce site pour la gestion des commentaires. J\'ai bien noté qu\'en aucun cas ces données ne seront cédées à des tiers.'
+            ])
             ->add('parentid',HiddenType::class,[
                 'mapped'=> false
             ])
