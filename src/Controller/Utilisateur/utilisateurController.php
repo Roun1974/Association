@@ -130,7 +130,7 @@ class utilisateurController extends AbstractController
              $comment->setParent($parent ?? null);
             $entityManager->persist($comment);
             $entityManager->flush();
-            $this->addFlash("success", "Votre commentaire a été ajouté avec succes");
+            $this->addFlash("success", "Votre commentaire a été ajouté avec succes et sera soumise à une validation");
             return $this->redirectToRoute('main_annonces');
         }
 

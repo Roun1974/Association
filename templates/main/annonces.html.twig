@@ -107,8 +107,7 @@
                       <li><a href="#"><strong>Annonce de :</strong></a></li>
                       <li><i class="icon-user"></i><a href="#"><strong>{{annonce.nickname}}</strong></a></li>
                       <li><i class="icon-calendar"></i><a href="#"> publiée le <strong>{{annonce.createdAt|date("d/m/Y H:i") }} </strong></a></li>
-                     <li><a href="{{ path('utilisateur_ajoutcomments') }}">Faire un commentaire</a></li>
-
+                      <li><a href="{{ path('utilisateur_ajoutcomments') }}">Ajouter un commentaire</a></li>
                     </ul>
                   </div>
                 </div>
@@ -122,8 +121,13 @@
                       {% for comment in annonce.comments %}
                       <p><span>Commentaire de : </span><strong>{{comment.nickname}}</strong> publié le  <strong>{{comment.createdAt|date("d/m/Y H:i") }}  </strong> </p>
                       <div>{{comment.content|raw}}</div>
-                      <p><a href="{{ path('utilisateur_ajoutcomments') }}" class="btn  btn-theme btn-rounded">Répondre</a></p>
+                      <p><a href="{{ path('utilisateur_ajoutcomments') }}" data-reply data-id="{{comment.id}}" class="btn  btn-theme btn-rounded">Répondre</a></p>
+                      {% for reply in comment.replies %}
+							<p>Réponse publiée par <strong>{{reply.nickname}} </strong> le <strong>{{reply.createdAt|date("d/m/Y H:i") }}</strong></p>
+							<div>{{reply.content|raw}}</div>
+						{% endfor %}
                       {% endfor %}
+                      
                     </div>
                   </div>
                    
@@ -139,4 +143,16 @@
       </div>
     </section>
    
+{% endblock %}
+{% block javascripts %}
+	<script>
+		window.onload = () => {
+			// On met un écouteur d'évènements sur tous les boutons répondre
+			document.querySelectorAll("[data-reply]").forEach(element => {
+				element.addEventListener("click", function(){
+					document.querySelector("#comments_parentid").value = this.dataset.id;
+				});
+			});
+		}
+	</script>
 {% endblock %}
