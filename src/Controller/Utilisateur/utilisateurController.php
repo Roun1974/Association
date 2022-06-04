@@ -101,13 +101,12 @@ class utilisateurController extends AbstractController
      /**
      * @Route("/comments", name="ajoutcomments")
      */
-    public function comments(Request $request, EntityManagerInterface $entityManager,$slug, AnnoncesRepository $annoncesRepository): Response
+    public function comments(Request $request, EntityManagerInterface $entityManager, AnnoncesRepository $annoncesRepository): Response
     {
         // Partie commentaires
         // On crée le commentaire "vierge"
         $comment = new Comments();
         
-        $annonce = $annoncesRepository->findOneBy(['slug' => $slug]);
          // On génère le formulaire
         $commentForm = $this->createForm(CommentsType::class, $comment);
         $commentForm->handleRequest($request);
@@ -115,7 +114,6 @@ class utilisateurController extends AbstractController
         // Traitement du formulaire
         if ($commentForm->isSubmitted() && $commentForm->isValid()){
             $comment->setCreatedAt(new DateTime());
-            $comment->setAnnonces($annonce);
 
             
              // On récupère le contenu du champ parentid
@@ -133,11 +131,11 @@ class utilisateurController extends AbstractController
             $entityManager->persist($comment);
             $entityManager->flush();
             $this->addFlash("success", "Votre commentaire a été ajouté avec succes");
-            return $this->redirectToRoute('main_annonces',['slug' => $annonce->getSlug()]);
+            return $this->redirectToRoute('main_annonces');
         }
 
         return $this->render('utilisateur/ajoutComments.html.twig', [
-            'annonce' => $annonce,
+            
             "comment" => $comment,
             "commentForm" => $commentForm->createView()
         ]);
