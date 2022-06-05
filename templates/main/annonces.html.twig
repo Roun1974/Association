@@ -86,17 +86,21 @@
                     </div>
                     <!-- start flexslider -->
                     <div class="flexslider">
+                       {% for image in annonce.images %}
                       <ul class="slides">
+                    
                         <li>
-                          <img src="assets/img/dummies/blog/img3.jpg" alt="" />
+                        <img src="{{ asset('/uploads/' ~ image.name) }}" alt="Image" width="90" >
+                        </li>
+                       
+                        <li>
+                          <img src="{{ asset('/uploads/' ~ image.name) }}" alt="Image" width="90" >
                         </li>
                         <li>
-                          <img src="assets/img/dummies/blog/img3.jpg" alt="" />
-                        </li>
-                        <li>
-                          <img src="assets/img/dummies/blog/img3.jpg" alt="" />
+                          <img src="{{ asset('/uploads/' ~ image.name) }}" alt="Image" width="90" >
                         </li>
                       </ul>
+                       {% endfor %}
                     </div>
                     <!-- end flexslider -->
                   </div>
