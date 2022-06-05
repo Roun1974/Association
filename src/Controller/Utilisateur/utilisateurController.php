@@ -109,7 +109,7 @@ class utilisateurController extends AbstractController
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->persist($annonce);
             $entityManager->flush();
-            
+
             $this->addFlash("success", "Votre annonce a été ajoutée avec succes");
             return $this->redirectToRoute('main_annonces');
         }
