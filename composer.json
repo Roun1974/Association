@@ -15,6 +15,7 @@
         "friendsofsymfony/ckeditor-bundle": "^2.4",
         "helios-ag/fm-elfinder-bundle": "^12.1",
         "knplabs/knp-paginator-bundle": "^5.8",
+        "liip/imagine-bundle": "^2.8",
         "phpdocumentor/reflection-docblock": "^5.3",
         "sensio/framework-extra-bundle": "^6.1",
         "symfony/apache-pack": "^1.0",

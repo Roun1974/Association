@@ -11,6 +11,7 @@ use App\Entity\Utilisateur;
 use App\Form\AnnoncesType;
 use App\Form\CommentaireType;
 use App\Form\CommentsType;
+use App\Entity\Images;
 use App\Form\EditProfileType;
 use App\Repository\AnnoncesRepository;
 use App\Repository\CommentaireRepository;
@@ -75,7 +76,7 @@ class utilisateurController extends AbstractController
   
 // Ajout d'une annonces
     /**
-     * @Route("/annonces", name="ajoutAnnonce")
+     * @Route("/annonces", name="ajoutAnnonce", methods={"GET","POST"})
      */
     public function ajoutAnnonce(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -87,10 +88,28 @@ class utilisateurController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
             $annonce->setUtilisateur($this->getUser());
             $annonce->setActive(false);
+           // On récupère les images transmises
+           $images = $form->get('images')->getData();
+            // On boucle sur les images
+            foreach($images as $image){
+            // On génère un nouveau nom de fichier
+            $fichier = md5(uniqid()) . '.' . $image->guessExtension();
+            // On copie le fichier dans le dossier uploads
+            $image->move(
+                $this->getParameter('images_directory'),
+                $fichier
+            );
+            // On stocke l'image dans la base de données (son nom)
+            $img = new Images();
+                $img->setName($fichier);
+                $annonce->addImage($img);
 
+
+            }
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->persist($annonce);
             $entityManager->flush();
+            
             $this->addFlash("success", "Votre annonce a été ajoutée avec succes");
             return $this->redirectToRoute('main_annonces');
         }
