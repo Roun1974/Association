@@ -48,7 +48,9 @@
                  {% for annonce in annonces %}
                 <ul class="recent">
                   <li>
-                    <img src="assets/img/dummies/blog/65x65/thumb1.jpg" class="pull-left" alt="" />
+                   {% for image in annonce.images %}
+                    <img src="{{ asset('uploads/' ~ image.name) }}" alt="annonce.title" width="90" height="90">
+                     {% endfor %}
                     <h6><a href="#">{{ annonce.title }}</a></h6>
                     <p>
                       Mazim alienum appellantur eu cu ullum officiis pro pri
