@@ -53,7 +53,7 @@
                      {% endfor %}
                     <h6><a href="#">{{ annonce.title }}</a></h6>
                     <p>
-                      Mazim alienum appellantur eu cu ullum officiis pro pri
+                      {{ annonce.content|u.truncate(160,'...')|raw}}
                     </p>
                   </li>
                 </ul>
