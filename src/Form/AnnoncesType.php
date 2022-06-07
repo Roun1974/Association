@@ -35,7 +35,7 @@ class AnnoncesType extends AbstractType
             // Il n'est pas lié à la base de données (mapped à false)
             ->add('images', FileType::class, [
                 'label' => false,
-                'multiple' => False,
+                'multiple' => true,
                 'mapped' => false,
                 'required' => false
             ]);

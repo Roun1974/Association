@@ -103,6 +103,7 @@ class utilisateurController extends AbstractController
             $img = new Images();
                 $img->setName($fichier);
                 $annonce->addImage($img);
+                $annonce->addImage($img);
 
 
             }
