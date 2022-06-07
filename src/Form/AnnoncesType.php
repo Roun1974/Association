@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 Use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use phpDocumentor\Reflection\PseudoTypes\False_;
 
 class AnnoncesType extends AbstractType
 {
@@ -34,7 +35,7 @@ class AnnoncesType extends AbstractType
             // Il n'est pas lié à la base de données (mapped à false)
             ->add('images', FileType::class, [
                 'label' => false,
-                'multiple' => true,
+                'multiple' => False,
                 'mapped' => false,
                 'required' => false
             ]);
