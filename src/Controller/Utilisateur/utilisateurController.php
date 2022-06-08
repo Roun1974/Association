@@ -100,12 +100,9 @@ class utilisateurController extends AbstractController
                 $fichier
             );
             // On stocke l'image dans la base de données (son nom)
-            $img = new Images();
+                $img = new Images();
                 $img->setName($fichier);
                 $annonce->addImage($img);
-                $annonce->addImage($img);
-
-
             }
             $entityManager=$this->getDoctrine()->getManager();
             $entityManager->persist($annonce);
