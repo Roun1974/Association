@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}Les commentaires{% endblock %}
 {% block body %}
-
   {% for message in app.flashes('success') %}
         <div class="alert alert-success">
             {{ message }}
@@ -48,7 +47,6 @@
                 </div>
               </div>
             </article>
-            
               <h4 class="lead">Commentaires</h4>
               {% for commentaire in projet.commentaires %}
             <div class="comment-area">
