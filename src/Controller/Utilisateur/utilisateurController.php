@@ -22,6 +22,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface; // Nous appelons le bundle KNP Paginator
 
 /**
  * @Route("/utilisateur", name="utilisateur_")
@@ -32,9 +33,14 @@ class utilisateurController extends AbstractController
     /**
      * @Route("/projet", name="listesProjet")
      */
-    public function listesProjet(ProjetRepository $projetRepository): Response
+    public function listesProjet(Request $request,PaginatorInterface $paginator,ProjetRepository $projetRepository): Response
     {
-        $projets = $projetRepository->findby([]);
+        $donnees = $this->getDoctrine()->getRepository(Projet::class)->findAll();
+        $projets = $paginator->paginate(
+            $donnees, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            1 // Nombre de résultats par page
+        );
 
         return $this->render('utilisateur/commentaires.html.twig', [
             'projets' => $projets,
