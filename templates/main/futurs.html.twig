@@ -30,7 +30,7 @@
             <article>
               <div class="top-wrapper">
                 <div class="post-heading">
-                  <h3><a href="#">This is an example of portfolio detail</a></h3>
+                  <h3><a href="#">Nos futurs projets</a></h3>
                 </div>
                 <!-- start flexslider -->
                 <div class="flexslider">
@@ -63,17 +63,19 @@
               <div class="widget">
                 <h5 class="widgetheading">Information sur le project </h5>
                 <ul class="folio-detail">
-                  <li><label>Catégories :</label> Web design</li>
-                  <li><label>Partenaires :</label> ASU Company</li>
+                  <li><label>Catégories :</label> Projets</li>
+                  <li><label>Partenaires :</label> </li>
                   
                 </ul>
               </div>
+              {% for projetFutur in projetFuturs %}
               <div class="widget">
-                <h5 class="widgetheading">Déscription du Projet</h5>
+                <h5 class="widgetheading">{{ projetFutur.nom }}</h5>
                 <p>
-                  Lorem ipsum dolor sit amet, unum suscipiantur te cum, vide magna ea eam. At eos wisi tractatos temporibus. Ne has omnis harum. Ei mea graece delenit nominati. Ut dolore albucius torquatos vel, choro gubergren no mel.
+                {{ projetFutur.description|u.truncate(270,'...')|raw  }}
                 </p>
               </div>
+              {% endfor %}
             </aside>
           </div>
         </div>
