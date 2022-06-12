@@ -90,11 +90,9 @@
                     <div class="flexslider">
                     {% for image in annonce.images %}
                       <ul class="slides">
-                    
                         <li>
-                        <img src="{{ asset('uploads/' ~ image.name) }}" alt="annonce.title" width="150">
+                        <img src="{{ asset('uploads/' ~ image.name) }}" alt="annonce.title" dwith="150">
                         </li>
-                       
                         <li>
                           <img src="{{ asset('uploads/' ~ image.name) }}"  alt="annonce.title"  width="150"  />
                         </li>
@@ -106,7 +104,6 @@
                     </div>
                     <!-- end flexslider -->
                   </div>
-                  
                      <p>{{ annonce.content|raw}}</p>
                      <div class="bottom-article">
                     <ul class="meta-post">

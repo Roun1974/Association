@@ -36,7 +36,7 @@
                   <p>
                     {{ projet.description }}
                   </p>
-                  <a class="btn  btn-theme btn-rounded" href="{{ path('utilisateur_commentaire') }}">Commenter le project</a>
+                  <a class="btn  btn-theme btn-rounded" href="{{ path('utilisateur_commentaire') }}">Commenter le projet</a>
                   <div class="bottom-article">
                     <ul class="meta-post">
                       <li><i class="icon-user"></i><a href="#"> {{ app.user.nom }} {{ app.user.prenom }}</a></li>
@@ -53,7 +53,7 @@
               <div class="media">
                 <div class="media-body">
                   <div class="media-content">
-                    <h6><span>Publié par :</span> {{ app.user.nom }} {{ app.user.prenom }}  <span> le 22 mai 2022<span></h6>
+                    <h6><span>Publié par :</span> {{ app.user.nom }} {{ app.user.prenom }} </h6>
                     <p>
                      {{ commentaire.commentaire|raw }}
                     </p>
