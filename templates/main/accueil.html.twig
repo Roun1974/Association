@@ -3,9 +3,15 @@
 {% block title %}Avenir - Solidarité - Développement{% endblock %}
 
 {% block body %}
-    {% include('inc/slides.html.twig') %}
+    {% include('inc/slides.html.twig') %}<br/>
+     
     <section id="content">
       <div class="container">
+       {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
         <div class="row">
           <div class="span12">
             <div class="row">
@@ -14,6 +20,7 @@
                   <div class="aligncenter icon">
                     <i class="icon-briefcase icon-circled icon-64 active"></i>
                   </div>
+                 
                   <div class="text">
                     <h6>Qui sommes nous ?</h6>
                    Avenir - Solidarité - Développement est une association intervenant dans le domaine de l’agriculture, la pisciculture et la prestation de services pour la production de biogaz en milieu rural au Sénégal. 
@@ -35,6 +42,7 @@
                   </div>
                 </div>
               </div>
+               
               <div class="span3">
                 <div class="box aligncenter">
                   <div class="aligncenter icon">
@@ -114,7 +122,7 @@ Notre mission est de participer à l’effort national de développement et de c
           </div>
           <!-- Unstyled Lists -->
           <div class="span3">
-            <h4>Apport des émigrés</h4>
+            <h4>L'immigration</h4>
              <img src="assets/img/works/full/image-11-full.jpg" alt="" />
               <p>La présence des ressortissants de Dondou en France est le résultat de plusieurs vagues d’immigration dont l’essentiel s’est produit pendant les trente glorieuses, lorsque l’économie française avait besoin de main d’œuvre, en 
 particulier dans les usines. C’est donc souvent vers les zones industrialisées et urbanisées que ces ressortissants 
