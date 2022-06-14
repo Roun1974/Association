@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class VideoController extends AbstractController
+class PaiementController extends AbstractController
 {
-    #[Route('/video', name: 'main_video')]
+    #[Route('/paiement', name: 'main_paiement')]
     public function index(): Response
     {
-        return $this->render('main/videos.html.twig', [
-            'controller_name' => 'VideoController',
+        return $this->render('paiement/index.html.twig', [
+            'controller_name' => 'PaiementController',
         ]);
     }
 }

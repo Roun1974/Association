@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement cotisation{% endblock %}
+
+{% block body %}
+  {% include('inc/slides.html.twig') %}<br/>
+<section class="container"><div class="row"><div class="col">
+  <h4>Nos services de paiement des<strong> cotisations en ligne</strong></h4>
+<form action="#" method="post">
+    <label for="prix">Cotisation membre :</label>
+    <input type="text" name="prix" id="prix" placeholder="Tapez le montant"><br>
+    <button class="btn  btn-theme margintop10" type="submit">Procéder au paiement</button>
+</form>
+</div>
+</div>
+</section>
+{% endblock %}
