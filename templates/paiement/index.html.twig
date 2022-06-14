@@ -6,11 +6,25 @@
   {% include('inc/slides.html.twig') %}<br/>
 <section class="container"><div class="row"><div class="col">
   <h4>Nos services de paiement des<strong> cotisations en ligne</strong></h4>
-<form action="#" method="post">
-    <label for="prix">Cotisation membre :</label>
-    <input type="text" name="prix" id="prix" placeholder="Tapez le montant"><br>
-    <button class="btn  btn-theme margintop10" type="submit">Procéder au paiement</button>
-</form>
+<div class="nav-space-checkout">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                 <form action="" method="POST">
+                    <script
+                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="pk_test_51L9XNOK2P3uJ8QLpYE2CRDI5D5piBS49I2RNGMasnMlPBXKNGg9lWeCqrtggK3KmH516itxsuPW6j0IBHGkFlKsX00GgnbWdKf"
+                        data-amount="6000"
+                        data-name="Associaton Dondou"
+                        data-description="en France"
+                        data-image="assets/img/logo.png"
+                        data-locale="auto">
+                    </script>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 </div>
 </section>
