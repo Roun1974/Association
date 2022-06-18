@@ -1,74 +1,109 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Paiement cotisation{% endblock %}
-
 {% block body %}
   {% include('inc/slides.html.twig') %}<br/>
-<section class="container"><div class="row"><div class="col">
-  <h4>Nos services de paiement des<strong> cotisations en ligne</strong></h4>
-<div class="nav-space-checkout">
-    <div class="container">
-        <div class="row">
-            <table  class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>
-                  Paiement
-                  </th>
-                  <th>
-                   Montant
-                  </th>
-                  <th>
-                   Unité
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                   Cotisation
-                  </td>
-                  <td>
-                  60
-                  </td>
-                  <td>
-                   €
-                  </td>
-                </tr>
-                <tr>
-                </tr>
-                <tr>
-                 
-                  <td>
-                  <strong> TOTAL</strong>
-                  </td>
-                  <td>
-                  <strong>60</strong>
-                  </td>
-                  <td>
-                   <strong>€</strong>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-            <div class="col-xs-12 col-sm-6">
-             <div class="span6">
-                 <form action="" method="POST">
-                    <script
-                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                        data-key="pk_test_51L9XNOK2P3uJ8QLpYE2CRDI5D5piBS49I2RNGMasnMlPBXKNGg9lWeCqrtggK3KmH516itxsuPW6j0IBHGkFlKsX00GgnbWdKf"
-                        data-amount="6000"
-                        data-name="Associaton Dondou"
-                        data-description="en France"
-                        data-image="assets/img/logo.png"
-                        data-locale="auto">
-                    </script>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<section class="container">
+<div class="row">
+<div class="col">
+  <h6>Nos services de paiement des<strong> cotisations en ligne</strong></h6>
+<div id="smart-button-container">
+    <div style="text-align: center"><label for="description">Description : </label><input type="text" name="descriptionInput" id="description" maxlength="127" value=""></div>
+      <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Veuillez saisir une description</p>
+    <div style="text-align: center"><label for="amount">Montant : </label><input name="amountInput" type="number" id="amount" value="" ><span> EUR</span></div>
+      <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Veuillez saisir un montant</p>
+    <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="" ></div>
+      <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Veuillez saisir un ID de facture</p>
+    <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
+  </div>
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=EUR" data-sdk-integration-source="button-factory"></script>
+  <script>
+  function initPayPalButton() {
+    var description = document.querySelector('#smart-button-container #description');
+    var amount = document.querySelector('#smart-button-container #amount');
+    var descriptionError = document.querySelector('#smart-button-container #descriptionError');
+    var priceError = document.querySelector('#smart-button-container #priceLabelError');
+    var invoiceid = document.querySelector('#smart-button-container #invoiceid');
+    var invoiceidError = document.querySelector('#smart-button-container #invoiceidError');
+    var invoiceidDiv = document.querySelector('#smart-button-container #invoiceidDiv');
+    var elArr = [description, amount];
+    if (invoiceidDiv.firstChild.innerHTML.length > 1) {
+      invoiceidDiv.style.display = "block";
+    }
+    var purchase_units = [];
+    purchase_units[0] = {};
+    purchase_units[0].amount = {};
+    function validate(event) {
+      return event.value.length > 0;
+    }
+    paypal.Buttons({
+      style: {
+        color: 'blue',
+        shape: 'rect',
+        label: 'checkout',
+        layout: 'vertical',
+      },
+      onInit: function (data, actions) {
+        actions.disable();
+        if(invoiceidDiv.style.display === "block") {
+          elArr.push(invoiceid);
+        }
+        elArr.forEach(function (item) {
+          item.addEventListener('keyup', function (event) {
+            var result = elArr.every(validate);
+            if (result) {
+              actions.enable();
+            } else {
+              actions.disable();
+            }
+          });
+        });
+      },
+      onClick: function () {
+        if (description.value.length < 1) {
+          descriptionError.style.visibility = "visible";
+        } else {
+          descriptionError.style.visibility = "hidden";
+        }
+        if (amount.value.length < 1) {
+          priceError.style.visibility = "visible";
+        } else {
+          priceError.style.visibility = "hidden";
+        }
+        if (invoiceid.value.length < 1 && invoiceidDiv.style.display === "block") {
+          invoiceidError.style.visibility = "visible";
+        } else {
+          invoiceidError.style.visibility = "hidden";
+        }
+        purchase_units[0].description = description.value;
+        purchase_units[0].amount.value = amount.value;
+
+        if(invoiceid.value !== '') {
+          purchase_units[0].invoice_id = invoiceid.value;
+        }
+      },
+      createOrder: function (data, actions) {
+        return actions.order.create({
+          purchase_units: purchase_units,
+        });
+      },
+      onApprove: function (data, actions) {
+        return actions.order.capture().then(function (orderData) {
+          // Full available details
+          console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+          // Show a success message within this page, e.g.
+          const element = document.getElementById('paypal-button-container');
+          element.innerHTML = '';
+          element.innerHTML = '<h3>Merci pour votre paiement</h3>';
+          // Or go to another URL:  actions.redirect('thank_you.html');
+        });
+      },
+      onError: function (err) {
+        console.log(err);
+      }
+    }).render('#paypal-button-container');
+  }
+  initPayPalButton();
+  </script>
 </div>
 </div>
 </section>
