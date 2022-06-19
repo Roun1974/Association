@@ -22,11 +22,8 @@
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
     <label for="inputPassword"><i class="icon-lock"></i> Password</label>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
     <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
+           value="{{ csrf_token('authenticate') }}">
         <div class="row">
             <div class="checkbox mb-3 col-8">
                 <label>
@@ -37,8 +34,6 @@
                 <a href="{{ path('app_forgot_password_request') }}" title="Password oublié">Mot de passe oublié ?</a>
             </div>
         </div>
-
-
     <button class="btn btn-lg btn-primary" type="submit">
         Me connecter
     </button>
