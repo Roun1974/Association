@@ -6,7 +6,7 @@ let stripe = Stripe('pk_test_51L9XNOK2P3uJ8QLpYE2CRDI5D5piBS49I2RNGMasnMlPBXKNGg
 let elements = stripe.elements();
 
 // Définit la redirection en cas de succès du paiement
-let redirect = "main/accueil.html.twig";
+let redirect = "main_accueil";
 
 // Récupère l'élément qui contiendra le nom du titulaire de la carte
 let cardholderName = document.getElementById('cardholder-name');

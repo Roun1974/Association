@@ -15,9 +15,16 @@ class StripeController extends AbstractController
      */
     public function index(): Response
     {
+        return $this->render('stripe/index.html.twig', [
+            'controller_name' => 'StripeController',
+        ]);
+    }
+     /**
+     * @Route("/paiement", name="app_paiement")
+     */
+    public function paiement(): Response
+    {
         if(isset($_POST['prix']) && !empty($_POST['prix'])){
-            // Nous appelons l'autoloader pour avoir accès à Stripe
-            require_once('vendor/autoload.php');
         
             // Nous instancions Stripe en indiquand la clé privée, pour prouver que nous sommes bien à l'origine de cette demande
             \Stripe\Stripe::setApiKey('sk_test_51L9XNOK2P3uJ8QLpAodNXhp4SHwwKZtJ2QroeCvFEGNiRTSWwm9radVPjGStUXlE0SgPLTkjue5UJRj96qknDMW400StYb9DvZ');
@@ -28,7 +35,7 @@ class StripeController extends AbstractController
                 'currency' => 'eur',
             ]);
         }
-        return $this->render('stripe/index.html.twig', [
+        return $this->render('stripe/paiement.html.twig', [
             'controller_name' => 'StripeController',
         ]);
     }

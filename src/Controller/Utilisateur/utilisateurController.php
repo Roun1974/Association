@@ -130,22 +130,16 @@ class utilisateurController extends AbstractController
         // Partie commentaires
         // On crée le commentaire "vierge"
         $comment = new Comments();
-        
          // On génère le formulaire
         $commentForm = $this->createForm(CommentsType::class, $comment);
         $commentForm->handleRequest($request);
-
         // Traitement du formulaire
         if ($commentForm->isSubmitted() && $commentForm->isValid()){
             $comment->setCreatedAt(new DateTime());
-
-            
              // On récupère le contenu du champ parentid
              $parentid = $commentForm->get("parentid")->getData();
-
              // On va chercher le commentaire correspondant
              $entityManager = $this->getDoctrine()->getManager();
- 
              if($parentid != null){
                  $parent = $entityManager->getRepository(Comments::class)->findBy($parentid);
              }

@@ -5,16 +5,12 @@
 <div class="row">
 <div class="col">
 <h6>Nos services de paiement des<strong> cotisations en ligne</strong></h6>
-<form  method="post">
-    <label for="prix">Montant :</label>
-    <input type="text" name="prix" id="prix" placeholder="Entrer le montant">
-     <div id="errors"></div>
-    <input id="cardholder-name" type="text" placeholder="Titulaire de la carte">
-    <div id="card-element">
-    </div>
-    <div id="card-errors" role="alert"></div><br/>
-    <button class="btn btn-large btn-theme btn-rounded" id="card-button" type="button" data-secret="<?= $intent['client_secret'] ?>">Procéder au paiement</button>
+<form action="{{ path('app_paiement') }}" method="post">
+    <label for="prix">Prix</label>
+    <input type="text" name="prix" id="prix">
+    <button class="btn btn-theme btn-rounded" >Procéder au paiement</button>
 </form>
+
 </div>
 </div>
 </div>
