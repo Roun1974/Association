@@ -4,10 +4,14 @@
 <section class="container">
 <div class="row">
 <div class="col">
-<h6>Nos services de paiement des<strong> cotisations en ligne</strong></h6>
+<h4>Nos services de paiement des<strong> cotisations en ligne</strong></h4>
 <form method="post">
     <div id="errors"></div>
-    <input id="cardholder-name" type="text" placeholder="Titulaire de la carte">
+    <label>Nom et prénom :</label>
+    <input id="cardholder-name" type="text" placeholder="Titulaire de la carte"><br/>
+     <label>Adresse mail :</label>
+     <input id="cardholder-name" type="email" placeholder="Vtre email">
+      <label>Information de votre carte :</label>
     <div id="card-element">
     </div>
     <div id="card-errors" role="alert"></div><br/>
@@ -18,4 +22,6 @@
 </div>
 </div>
 </section>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="{{asset('assets/js/scripts.js')}}"></script>
 {% endblock %}

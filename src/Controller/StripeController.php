@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\HttpFoundation\Request; 
 
 class StripeController extends AbstractController
 {
@@ -22,10 +23,10 @@ class StripeController extends AbstractController
      /**
      * @Route("/paiement", name="app_paiement")
      */
-    public function paiement(): Response
+    public function paiement(Request $request): Response
     {
         if(isset($_POST['prix']) && !empty($_POST['prix'])){
-        
+            require_once('../vendor/autoload.php');
             // Nous instancions Stripe en indiquand la clé privée, pour prouver que nous sommes bien à l'origine de cette demande
             \Stripe\Stripe::setApiKey('sk_test_51L9XNOK2P3uJ8QLpAodNXhp4SHwwKZtJ2QroeCvFEGNiRTSWwm9radVPjGStUXlE0SgPLTkjue5UJRj96qknDMW400StYb9DvZ');
         
