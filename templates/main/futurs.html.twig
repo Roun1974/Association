@@ -33,17 +33,18 @@
                 </div>
                 <!-- start flexslider -->
                 <div class="flexslider">
-                  <ul class="slides">
-                    <li>
-                      <img src="assets/img/works/full/image-01-full.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="assets/img/works/full/image-02-full.jpg" alt="" />
-                    </li>
-                    <li>
-                      <img src="assets/img/works/full/image-03-full.jpg" alt="" />
-                    </li>
-                  </ul>
+                 <ul class="slides">
+                
+                <li>
+                  <img src="assets/img/works/full/image-03-full.jpg" alt="" />
+                </li>
+                <li>
+                  <img src="assets/img/works/full/image-05-full.jpg" alt="" />
+                </li>
+                <li>
+                  <img src="assets/img/works/full/image-06-full.jpg" alt="" />
+                </li>
+              </ul>
                 </div>
                 <!-- end flexslider -->
               </div>
@@ -51,7 +52,7 @@
         {% for projetFutur in projetFuturs %}
             <section class="col-4 mt-5">
                 <h4 lass="lead">{{ projetFutur.nom }}</h4>
-                <p>{{ projetFutur.description }} .</p>
+                <p>{{ projetFutur.description |raw}} .</p>
             </section>
         {% endfor %}
         </div>

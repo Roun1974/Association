@@ -34,7 +34,7 @@
                     </div>
                   </div>
                   <p>
-                    {{ projet.description }}
+                    {{ projet.description |raw}}
                   </p>
                   <a class="btn  btn-theme btn-rounded" href="{{ path('utilisateur_commentaire') }}">Commenter le projet</a>
                   <div class="bottom-article">
