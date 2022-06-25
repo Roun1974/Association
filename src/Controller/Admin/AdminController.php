@@ -124,8 +124,6 @@ class AdminController extends AbstractController
             "form" => $form->createView()
         ]);
     }
-
-
     // suppression d'un utilisateur
     /**
      * @Route("/adherent/suppression/{id}", name="suppressionUtilisateur")
@@ -152,7 +150,7 @@ class AdminController extends AbstractController
             $entityManager->persist($categorie);
             $entityManager->flush();
             $this->addFlash("success", "L'ajout a été effectuée");
-            return $this->redirectToRoute('admin_categorie');
+            return $this->redirectToRoute('admin_ajoutCategorie');
         }
         return $this->render('admin/admin/ajoutCategorie.html.twig', [
             "form" => $form->createView(),
