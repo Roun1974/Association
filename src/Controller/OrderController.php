@@ -16,7 +16,7 @@ class OrderController extends AbstractController
 {
    /**
      * @Route("/checkout", name="order_checkout")
-     * @Security("is_granted('ROLE_USER')")
+    
      */
     public function checkoutAction(Request $request): Response
     {

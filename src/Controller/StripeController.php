@@ -12,7 +12,6 @@ class StripeController extends AbstractController
 {
     /**
      * @Route("/stripe", name="app_stripe")
-     * @Security("is_granted('ROLE_USER')")
      */
     public function index(): Response
     {

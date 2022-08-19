@@ -2,11 +2,6 @@
 {% block title %}Formulaire de contact{% endblock %}
 {% block body %}
  {% include('inc/slides.html.twig') %}
-  {% for message in app.flashes('success') %}
-        <div class="alert alert-success" >
-            {{ message }}
-        </div>
-    {% endfor %}
  <section id="content">
  <div class="post-heading">
  <div class="container">
@@ -14,6 +9,11 @@
           <div class="span12">
 {{ form_start(form) }}
 <div class="row">
+{% for message in app.flashes('success') %}
+        <div class="alert alert-success" >
+            {{ message }}
+        </div>
+    {% endfor %}
   <div class="span4 form-group">
     {{ form_row(form.nom, {'attr': {'class': 'form-control'}}) }}
 </div>
